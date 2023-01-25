@@ -1,20 +1,46 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import React from "react"
+
+import { 
+  StyleSheet, 
+  Text, 
+  View, 
+  Pressable,
+  StatusBar
+} from 'react-native';
+
+import { useFonts } from "expo-font";
+
+import { Loading } from "./src/components/Loading";
 
 export default function App() {
+
+  const [fontsLoaded] = useFonts({
+    'Inter-Black' : require('./src/assets/fonts/Inter/static/Inter-Black.ttf')
+  })
+
+  if (!fontsLoaded) {
+    return <Loading />
+  }
+
   return (
     <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-      <StatusBar style="auto" />
+      <Text style={styles.text}>Hello World!</Text>
+      <Text style={{color: '#414141'}}>It's a better place to living.</Text>
+      <StatusBar barStyle='light-content' backgroundColor='transparent'  translucent />
     </View>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
+    display: 'flex',
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
     justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#09090A'
   },
+  text: {
+    color: '#fff',
+    fontFamily: 'Inter-Black'
+  }
 });
