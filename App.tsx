@@ -1,21 +1,26 @@
 import React from "react"
-
-import { 
-  StyleSheet, 
-  Text, 
-  View, 
-  Pressable,
-  StatusBar
-} from 'react-native';
+import { StatusBar } from "react-native";
 
 import { useFonts } from "expo-font";
 
+import "./src/lib/dayjs"
+
+// Components
 import { Loading } from "./src/components/Loading";
+import { Home } from "./src/screens/Home";
 
 export default function App() {
 
   const [fontsLoaded] = useFonts({
-    'Inter-Black' : require('./src/assets/fonts/Inter/static/Inter-Black.ttf')
+    'Inter-Thin' : require('./src/assets/fonts/Inter/static/Inter-Thin.ttf'),
+    'Inter-Light' : require('./src/assets/fonts/Inter/static/Inter-Light.ttf'),
+    'Inter-ExtraLight' : require('./src/assets/fonts/Inter/static/Inter-ExtraLight.ttf'),
+    'Inter-Regular' : require('./src/assets/fonts/Inter/static/Inter-Regular.ttf'),
+    'Inter-Black' : require('./src/assets/fonts/Inter/static/Inter-Black.ttf'),
+    'Inter-Medium' : require('./src/assets/fonts/Inter/static/Inter-Medium.ttf'),
+    'Inter-SemiBold' : require('./src/assets/fonts/Inter/static/Inter-SemiBold.ttf'),
+    'Inter-Bold' : require('./src/assets/fonts/Inter/static/Inter-Bold.ttf'),
+    'Inter-ExtraBold' : require('./src/assets/fonts/Inter/static/Inter-ExtraBold.ttf'),
   })
 
   if (!fontsLoaded) {
@@ -23,24 +28,9 @@ export default function App() {
   }
 
   return (
-    <View style={styles.container}>
-      <Text style={styles.text}>Hello World!</Text>
-      <Text style={{color: '#414141'}}>It's a better place to living.</Text>
+    <>
+      <Home />
       <StatusBar barStyle='light-content' backgroundColor='transparent'  translucent />
-    </View>
+    </>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    display: 'flex',
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#09090A'
-  },
-  text: {
-    color: '#fff',
-    fontFamily: 'Inter-Black'
-  }
-});
