@@ -4,6 +4,8 @@ import {
     Text, 
     ScrollView
 } from "react-native"
+import { useNavigation } from "@react-navigation/native"
+import { genDay } from "../utils/days"
 
 // Components
 import { 
@@ -13,7 +15,6 @@ import {
 
 import { Header } from "../components/Header"
 
-import { genDay } from "../utils/days"
 
 
 const weekDays = ['D','S','T','Q','Q','S','S']
@@ -22,6 +23,9 @@ const minSumDates = 18 * 7
 const amountOfDaysToFill = minSumDates - days.length
 
 export const Home = () => {
+
+    const { navigate } = useNavigation()
+
     return (
         <View className="flex-1 bg-background px-8 pt-16">
             {/** Header */}
@@ -45,6 +49,7 @@ export const Home = () => {
                 {days.map(date => (
                         <Habits 
                             key={date.toISOString()}
+                            onPress={() => navigate('habits', { date: date.toISOString() })}
                         />
                 ))}
                 {/** amountOfDaysToFill  */}

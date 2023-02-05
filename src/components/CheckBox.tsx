@@ -31,7 +31,7 @@ export function CheckBox ({checked = false, title, ...rest}: Props) {
             : <View  className="w-8 h-8 bg-zinc-800 rounded-lg" />
             }
 
-            <Text className="ml-3 text-white">{title}</Text>
+            <Text className="ml-3 text-white font-semibold">{title}</Text>
         </TouchableOpacity>
     )
 }
